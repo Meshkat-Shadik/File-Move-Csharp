@@ -1,4 +1,4 @@
-ry
+try
             {
                 string connection = "datasource=localhost;username=root;password=; database=bloodbank";
                 string query = "SELECT * from recieverdata where Phone='" + this.textBox2.Text + "'and Password='" + this.textBox1.Text + "';";
@@ -38,5 +38,3 @@ ry
             {
                 MessageBox.Show(ex.Message);
             }
-Chat conversation end
-Type a message...
