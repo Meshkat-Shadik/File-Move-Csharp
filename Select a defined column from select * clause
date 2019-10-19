@@ -1,0 +1,42 @@
+ry
+            {
+                string connection = "datasource=localhost;username=root;password=; database=bloodbank";
+                string query = "SELECT * from recieverdata where Phone='" + this.textBox2.Text + "'and Password='" + this.textBox1.Text + "';";
+                MySqlConnection con = new MySqlConnection(connection);
+                MySqlCommand command = new MySqlCommand(query, con);
+
+                // MySqlDataReader reader;
+                con.Open();
+
+
+                var dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+
+                    dr.Read();
+                    // id = Convert.ToInt32(dr.GetString(0));
+                    name = dr.GetString(1);
+                    mobile = dr.GetString(5);
+
+
+                    MessageBox.Show("Login Successfull\n " + name);
+                    // mainmenu 
+                    Profile obj = new Profile(name);
+                    obj.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    label4.Visible = true;
+
+                    MessageBox.Show("wrong Username/password \n " + name);
+                }
+                dr.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+Chat conversation end
+Type a message...
